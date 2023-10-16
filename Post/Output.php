@@ -33,7 +33,7 @@
             gap: 20px;
         }
 
-        a {
+        .new a {
             margin-top: 6px;
             margin-left: 45px;
             border: 2px solid black;
@@ -47,12 +47,16 @@
 </head>
 
 <body>
-    <a href="index.php">Add New</a>
+    <div class="new">
+
+        <a href="index.php">Add New</a>
+    </div>
     <table>
         <tr>
             <th>Id</th>
             <th>Names</th>
             <th>Action</th>
+
         </tr>
         <tr>
             <?php
@@ -69,8 +73,8 @@
                      <td>  $user[Id]  </td>
                      <td>  $user[Name]  </td>
                      <td> 
-                     <button>Edit</>
-                     <button>Delete</>
+                     <a href='update.php?id={$user['Id']}'>Edit</a>
+                     <a href='delete.php?id={$user['Id']}'>Delete</a>
                      </td>
 
                     </tr>";

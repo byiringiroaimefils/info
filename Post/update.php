@@ -1,3 +1,16 @@
+<?php
+$id=$_GET['id']; 
+include("conn.php");
+$sql = "SELECT * FROM users WHERE Id='$id'";
+$Output = mysqli_query($connect, $sql);
+$row=mysqli_fetch_assoc($Output);
+echo $row['Name'];
+echo $row['password'];
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,9 +50,9 @@
 <body>
     <form action="" method="Post">
         <label for="">UserName</label>
-        <input type="text" name="username"> <br> <br> <br>
+        <input type="text" name="username" value="<?php $row['Name'];?>"> <br> <br> <br>
         <label for="">Password</label>
-        <input type="password" name="Password"> <br> <br>
+        <input type="password" name="Password"  value="<?php $row['password'];?>" > <br> <br>
         <button type="submit">submit</button>
     
     </form>
@@ -48,21 +61,3 @@
 
 </html>
 
-
-<?php
-include("conn.php");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $Password = $_POST["Password"];
-
-
-    $sql = "INSERT INTO users(Name,Password ) VALUES ('$username', '$Password')";
-
-
-    $run=mysqli_query($connect, $sql);
-    if ($run) {
-       header("location:Output.php");
-    }
-}
-?>
